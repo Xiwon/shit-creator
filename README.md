@@ -1,5 +1,5 @@
 # shit-creator
-> a program that read a program and output some shit-like code. 😍
+> a program that reads a program and outputs some shit-like code. 😍
 
 简单的替换所有的标识符为 '0', 'o', 'O' 组成的字符串
 
