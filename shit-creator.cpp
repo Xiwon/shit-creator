@@ -34,7 +34,7 @@ inline void init() {
         "strlen", "strcat", "strcpy", "memcpy", "memmove", "shuffle", "random_shuffle",
         "isupper", "islower", "isalnum", "isalpha", "rand", "strcmp", "compare",
         "push_front", "pop_front", "front", "priority_queue", "queue", "deque", "putchar",
-        "gets"
+        "gets", "sqrt"
     };
 	const int T = 1000;
 	for (int i = 0; i <= T; i++) if (ks[i] != "") keys.insert(ks[i]);
@@ -50,7 +50,8 @@ mt19937 seed((unsigned long long)new char);
 
 
 struct stringset{
-	vector<string> ret={"🕐","🕑","🕒","🕓","🕔","🕕","🕖","🕗","🕘","🕙","🕚","🕛","🕜","🕝","🕞","🕟","🕠","🕡","🕢","🕣","🕤","🕥","🕦","🕧"};
+	vector<string> ret={"1","2","3","4","5","6","7","8","9","0"};
+	string preffix="__int";
 	int maxl=ret.size();
 	string id(int x){
 		if(x<0)x=0;
@@ -67,7 +68,10 @@ inline string gen() {
 	do {
 		now = "";
 		for (int i = 1; i <= len; i++) now += drr.id(random(0, drr.maxl-1));
-		if (now[0] == '0') now =  drr.id(random(0, drr.maxl-1)) + now;
+		if(drr.preffix=="") { // 无 preffix 时保证不以数字开头
+			while (isdigit(now[0])) now =  drr.id(random(0, drr.maxl-1)) + now;
+		}
+		now = drr.preffix + now;
 	} while (holder.find(now) != holder.end());
 	holder.insert(now);
 	return now;
