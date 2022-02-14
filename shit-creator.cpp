@@ -50,26 +50,26 @@ mt19937 seed((unsigned long long)new char);
 
 
 struct stringset{
-	vector<string> ret={"1","2","3","4","5","6","7","8","9","0"};
-	string preffix="__int";
-	int maxl=ret.size();
+	vector<string> ret={"1", "2", "3", "4", "5", "6", "7", "8", "9", "0"};
+	string preffix = "__int";
+	int maxl = ret.size();
 	string id(int x){
-		if(x<0)x=0;
-		if(x>=maxl)x=maxl-1;
+		if (x < 0) x = 0;
+		if (x >= maxl) x = maxl - 1;
 		return ret[x];
 	}
-}drr;
+} drr;
 
 set<string> holder;
 inline string gen() {
 	string now;
-	int len = random(2+sqrt(20/drr.maxl), 4+sqrt(20/drr.maxl));
+	int len = random(2 + sqrt(20 / drr.maxl), 4 + sqrt(20 / drr.maxl));
 
 	do {
 		now = "";
-		for (int i = 1; i <= len; i++) now += drr.id(random(0, drr.maxl-1));
-		if(drr.preffix=="") { // 无 preffix 时保证不以数字开头
-			while (isdigit(now[0])) now =  drr.id(random(0, drr.maxl-1)) + now;
+		for (int i = 1; i <= len; i++) now += drr.id(random(0, drr.maxl - 1));
+		if (drr.preffix == "") { // 无 preffix 时保证不以数字开头
+			while (isdigit(now[0])) now =  drr.id(random(0, drr.maxl - 1)) + now;
 		}
 		now = drr.preffix + now;
 	} while (holder.find(now) != holder.end());
